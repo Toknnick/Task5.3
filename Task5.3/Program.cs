@@ -33,7 +33,6 @@ namespace Task5._3
                         if (int.TryParse(input, out int number))
                         {
                             listOfNumbers.Add(number);
-                            number = Convert.ToInt32(input);
                             Console.WriteLine("Число получено.");
                         }
                         else
