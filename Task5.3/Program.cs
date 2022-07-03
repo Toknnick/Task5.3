@@ -1,4 +1,4 @@
-﻿using System;
+sing System;
 using System.Collections.Generic;
 
 namespace Task5._3
@@ -13,35 +13,44 @@ namespace Task5._3
 
             while (isWorking)
             {
+                Console.WriteLine("Ожидается ввод числа:");
                 string input = Console.ReadLine().ToLower().Trim();
 
                 switch (input)
                 {
                     case "sum":
-                        int sum = 0;
-
-                        for (int i = 0; i < listOfNumbers.Count; i++)
-                            sum += listOfNumbers[i];
-
-                        Console.WriteLine($"Сумма введеных чисел: {sum}\n");
+                        Sum(listOfNumbers);
                         break;
                     case "exit":
                         isWorking = false;
                         break;
                     default:
-
-                        if (int.TryParse(input, out int number))
-                        {
-                            listOfNumbers.Add(number);
-                            Console.WriteLine("Число получено.");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Нужно ввести число!");
-                        }
-
+                        GetNumber(input, listOfNumbers);
                         break;
                 }
+            }
+        }
+
+        static void Sum(List<int> listOfNumbers )
+        {
+            int sum = 0;
+
+            foreach (int number in listOfNumbers)
+                sum += number;
+
+            Console.WriteLine($"Сумма введеных чисел: {sum}\n");
+        }
+
+        static void GetNumber(string input, List<int> listOfNumbers)
+        {
+            if (int.TryParse(input, out int number))
+            {
+                listOfNumbers.Add(number);
+                Console.WriteLine("Число получено.");
+            }
+            else
+            {
+                Console.WriteLine("Нужно ввести число!");
             }
         }
     }
